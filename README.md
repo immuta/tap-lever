@@ -1,6 +1,6 @@
 # tap-lever
 
-`tap-lever` is a Singer tap for Lever.
+`tap-lever` is a Singer tap for the Lever API. Documentation for the API can be found on [Lever's website](https://hire.lever.co/developer/documentation).
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 

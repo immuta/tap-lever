@@ -18,7 +18,6 @@ class LeverStream(RESTStream):
     """Lever stream class."""
 
     url_base = "https://api.lever.co/v1"
-
     records_jsonpath = "$.data[*]"
     next_page_token_jsonpath = "$.next"
 
@@ -44,15 +43,7 @@ class LeverStream(RESTStream):
         params: dict = {}
         if next_page_token:
             params["offset"] = next_page_token
-        if self.replication_key:
-            params["sort"] = "asc"
-            params["order_by"] = self.replication_key
+        # if self.replication_key:
+        #     params["sort"] = "asc"
+        #     params["order_by"] = self.replication_key
         return params
-
-    def parse_response(self, response: requests.Response) -> Iterable[dict]:
-        """Parse the response and return an iterator of result rows."""
-        yield from extract_jsonpath(self.records_jsonpath, input=response.json())
-
-    def post_process(self, row: dict, context: Optional[dict]) -> dict:
-        """As needed, append or transform raw data to match expected structure."""
-        return row

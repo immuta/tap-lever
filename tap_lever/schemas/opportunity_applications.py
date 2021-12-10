@@ -1,6 +1,7 @@
 from singer_sdk import typing as th
 
 schema = th.PropertiesList(
+    th.Property("opportunity_id", th.StringType),
     th.Property("id", th.StringType),
     th.Property("candidateId", th.StringType),
     th.Property("type", th.StringType),

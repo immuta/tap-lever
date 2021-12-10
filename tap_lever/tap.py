@@ -5,12 +5,29 @@ from typing import List
 from singer_sdk import Tap, Stream
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-# TODO: Import your custom stream types here:
 from tap_lever.streams import (
+    ArchiveReasonsStream,
+    OpportunitiesStream,
+    OpportunityApplicationsStream,
+    OpportunityOffersStream,
+    OpportunityReferralsStream,
+    OpportunityResumesStream,
+    PostingsStream,
+    SourcesStream,
+    StagesStream,
     UsersStream,
 )
 
 STREAM_TYPES = [
+    ArchiveReasonsStream,
+    OpportunitiesStream,
+    OpportunityApplicationsStream,
+    OpportunityOffersStream,
+    OpportunityReferralsStream,
+    OpportunityResumesStream,
+    PostingsStream,
+    SourcesStream,
+    StagesStream,
     UsersStream,
 ]
 
@@ -20,7 +37,6 @@ class TapLever(Tap):
 
     name = "tap-lever"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
             "api_key",
