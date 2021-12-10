@@ -8,18 +8,24 @@ schema = th.PropertiesList(
     th.Property("stage", th.StringType),
     th.Property("stageChanges", th.ArrayType(th.StringType)),
     th.Property("location", th.StringType),
-    th.Property("phones", th.ArrayType(
-        th.ObjectType(
-            th.Property("value", th.StringType),
-            th.Property("type", th.StringType),
-        )),
+    th.Property(
+        "phones",
+        th.ArrayType(
+            th.ObjectType(
+                th.Property("value", th.StringType),
+                th.Property("type", th.StringType),
+            )
+        ),
     ),
     th.Property("emails", th.ArrayType(th.StringType)),
     th.Property("links", th.ArrayType(th.StringType)),
-    th.Property("archived", th.ObjectType(
-        th.Property("archivedAt", th.StringType),
-        th.Property("reason", th.StringType),
-    )),
+    th.Property(
+        "archived",
+        th.ObjectType(
+            th.Property("archivedAt", th.StringType),
+            th.Property("reason", th.StringType),
+        ),
+    ),
     th.Property("tags", th.ArrayType(th.StringType)),
     th.Property("sources", th.ArrayType(th.StringType)),
     th.Property("origin", th.StringType),

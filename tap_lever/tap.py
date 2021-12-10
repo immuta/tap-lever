@@ -17,6 +17,7 @@ STREAM_TYPES = [
 
 class TapLever(Tap):
     """Lever tap class."""
+
     name = "tap-lever"
 
     # TODO: Update this section with the actual config values you expect:
@@ -25,12 +26,12 @@ class TapLever(Tap):
             "api_key",
             th.StringType,
             required=True,
-            description="The token to authenticate against the API service"
+            description="The token to authenticate against the API service",
         ),
         th.Property(
             "start_date",
             th.DateTimeType,
-            description="The earliest record date to sync"
+            description="The earliest record date to sync",
         ),
     ).to_dict()
 
