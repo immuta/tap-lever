@@ -51,7 +51,6 @@ class PostingsStream(LeverStream):
     name = "postings"
     path = "/postings"
     primary_keys = ["id"]
-    replication_key = None
     schema = schemas.postings
 
 
