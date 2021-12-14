@@ -2,6 +2,7 @@ from singer_sdk import typing as th
 
 schema = th.PropertiesList(
     th.Property("opportunity_id", th.StringType),
+    th.Property("opportunityId", th.StringType),
     th.Property("id", th.StringType),
     th.Property("candidateId", th.StringType),
     th.Property("type", th.StringType),
@@ -12,7 +13,7 @@ schema = th.PropertiesList(
     th.Property("createdAt", th.NumberType),
     th.Property("phone", th.StringType),
     th.Property("company", th.StringType),
-    th.Property("links", th.StringType),
+    th.Property("links", th.ArrayType(th.StringType)),
     th.Property("comments", th.StringType),
     th.Property("resume", th.StringType),
     th.Property("customQuestions", th.StringType),

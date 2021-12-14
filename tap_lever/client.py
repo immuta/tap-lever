@@ -1,6 +1,7 @@
 """REST client handling, including LeverStream base class."""
 
-import requests
+from datetime import datetime
+from dateutil import parser
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, List, Iterable
 
@@ -40,10 +41,18 @@ class LeverStream(RESTStream):
         self, context: Optional[dict], next_page_token: Optional[Any]
     ) -> Dict[str, Any]:
         """Return a dictionary of values to be used in URL parameterization."""
-        params: dict = {}
+        params = {"limit": 100}
         if next_page_token:
             params["offset"] = next_page_token
-        # if self.replication_key:
-        #     params["sort"] = "asc"
-        #     params["order_by"] = self.replication_key
+        if self.replication_key:
+            start_value = self.get_starting_replication_key_value(context)
+            params[f"updated_at_start"] = self._try_timestamp_to_epoch(start_value)
         return params
+
+    def _try_timestamp_to_epoch(self, ts_value):
+        "Converts to 13-digit epoch with milliseconds."
+        try:
+            parsed = parser.parse(ts_value)
+            return parsed.strftime("%s%f")[:-3]
+        except parser.ParserError:
+            return ts_value
