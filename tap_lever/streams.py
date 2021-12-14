@@ -36,7 +36,7 @@ class OpportunitiesStream(LeverStream):
     name = "opportunities"
     path = "/opportunities"
     primary_keys = ["id"]
-    replication_key = None
+    replication_key = "updatedAt"
     schema = schemas.opportunities
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
@@ -51,7 +51,6 @@ class PostingsStream(LeverStream):
     name = "postings"
     path = "/postings"
     primary_keys = ["id"]
-    replication_key = None
     schema = schemas.postings
 
 

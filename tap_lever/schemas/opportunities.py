@@ -39,4 +39,6 @@ schema = th.PropertiesList(
     th.Property("urls", th.ObjectType()),
     th.Property("dataProtection", th.ObjectType()),
     th.Property("isAnonymized", th.BooleanType),
+    th.Property("createdAt", th.IntegerType),
+    th.Property("updatedAt", th.IntegerType),
 ).to_dict()
